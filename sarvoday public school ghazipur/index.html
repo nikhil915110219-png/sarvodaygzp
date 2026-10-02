@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarvoday Public School - Management Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- ================= SPLASH ================= -->
+    <section id="splashScreen" class="screen splash-screen">
+        <div class="splash-content">
+            <div class="logo-wrapper">
+                <div class="logo-glow"></div>
+                <div class="school-logo">SPS</div>
+            </div>
+
+            <h1>Sarvoday Public School</h1>
+            <p>Ghazipur, Uttar Pradesh</p>
+
+            <div class="loading-line">
+                <span></span>
+            </div>
+
+            <small>School Management Portal</small>
+        </div>
+    </section>
+
+
+    <!-- ================= LOGIN ================= -->
+    <section id="loginScreen" class="screen login-screen hidden">
+
+        <div class="login-background">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="login-card">
+
+            <div class="login-brand">
+                <div class="mini-logo">SPS</div>
+                <h1>Sarvoday Public School</h1>
+                <p>Secure Management Portal</p>
+            </div>
+
+            <!-- PASSWORD LOGIN -->
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="loginId">Registered Mobile Number</label>
+
+                    <div class="input-box">
+                        <span>📱</span>
+                        <input
+                            type="tel"
+                            id="loginId"
+                            placeholder="Enter registered mobile number"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+
+                    <div class="input-box">
+                        <span>🔐</span>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="eye-button"
+                        >👁</button>
+                    </div>
+                </div>
+
+                <div id="loginError" class="error-message hidden"></div>
+
+                <button type="submit" id="loginButton" class="primary-button">
+                    <span class="button-text">Continue to OTP</span>
+                    <span class="button-loader hidden"></span>
+                </button>
+
+                <button
+                    type="button"
+                    id="forgotPasswordButton"
+                    class="text-button"
+                >
+                    Forgot Password?
+                </button>
+
+            </form>
+
+            <div class="security-note">
+                <span>🔒</span>
+                <div>
+                    <strong>OTP Protected Login</strong>
+                    <small>
+                        OTP is sent to the registered mobile number.
+                    </small>
+                </div>
+            </div>
+
+            <div class="demo-note">
+                <strong>Local Demo</strong>
+                <p>
+                    OTP will appear on screen for testing.
+                    No real SMS is sent in frontend-only mode.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= MAIN APP ================= -->
+    <section id="mainApplication" class="main-application hidden">
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">SPS</div>
+
+                <div>
+                    <strong>Sarvoday</strong>
+                    <small>Public School</small>
+                </div>
+            </div>
+
+            <div class="sidebar-user">
+
+                <div id="sidebarUserAvatar" class="user-avatar">
+                    SA
+                </div>
+
+                <div class="sidebar-user-info">
+                    <strong id="sidebarUserName">User</strong>
+                    <span id="sidebarUserRole">Role</span>
+                </div>
+
+            </div>
+
+            <nav id="sidebarNavigation" class="sidebar-navigation"></nav>
+
+            <div class="sidebar-bottom">
+
+                <button id="settingsButton" class="sidebar-action">
+                    ⚙️
+                    <span>Settings</span>
+                </button>
+
+                <button id="logoutButton" class="sidebar-action logout">
+                    🚪
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        id="mobileMenuButton"
+                        class="mobile-menu-button"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+                        <div id="pageBreadcrumb" class="breadcrumb">
+                            Dashboard
+                        </div>
+
+                        <h2 id="pageTitle">Dashboard</h2>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <button
+                        id="notificationButton"
+                        class="icon-button"
+                    >
+                        🔔
+                        <span id="notificationCount">0</span>
+                    </button>
+
+                    <div class="topbar-user">
+
+                        <div id="topbarAvatar" class="topbar-avatar">
+                            SA
+                        </div>
+
+                        <div>
+                            <strong id="topbarName">User</strong>
+                            <small id="topbarRole">Role</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE -->
+            <section id="pageContainer" class="page-container"></section>
+
+        </main>
+
+    </section>
+
+
+    <!-- ================= MODAL ================= -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+
+        <div id="modalContainer" class="modal-container">
+
+            <button
+                id="modalCloseButton"
+                class="modal-close"
+            >
+                ×
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+    <div id="toastContainer" class="toast-container"></div>
+
+
+    <!-- ================= LOADER ================= -->
+    <div id="globalLoader" class="global-loader hidden">
+
+        <div class="loader-spinner"></div>
+
+        <p id="loaderText">
+            Please wait...
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
